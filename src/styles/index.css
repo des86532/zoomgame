@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+#root {
+  height: 100vh;
+}
+
+.app-wrapper {
+  height: 100%;
+  background: #ffd378;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.modal-wrapper {
+  background: url('../assets/images/modal_paper.png') center center;
+  background-size: cover;
+  height: 208px;
+  width: 253px;
+  position: fixed;
+  top: 30%;
+}
+
+.modal-wrapper .modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.267);
+  z-index: -1;
+}
+
+.modal-wrapper .content {
+  color: rgb(108, 107, 107);
+  margin-top: 70px;
+  font-size: 14px;
+  padding: 20px;
+}
+
+.modal-wrapper .content .text {
+  letter-spacing: 0.6px;
+  line-height: 20px;
+}
+
+.modal-wrapper .content .text b {
+  font-weight: 900;
+}
+
+.modal-wrapper .content .btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modal-wrapper .content .btn-group .btn {
+  width: 40%;
+}
