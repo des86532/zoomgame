@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/zoomgame/static/css/main.ff28db85.css",
+    "main.js": "/zoomgame/static/js/main.19c3a78d.js",
+    "static/media/bg_welcome.png": "/zoomgame/static/media/bg_welcome.22c1b4d7c58c862b9e3a.png",
+    "index.html": "/zoomgame/index.html",
+    "main.ff28db85.css.map": "/zoomgame/static/css/main.ff28db85.css.map",
+    "main.19c3a78d.js.map": "/zoomgame/static/js/main.19c3a78d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff28db85.css",
+    "static/js/main.19c3a78d.js"
+  ]
+}
