@@ -1,14 +1,15 @@
 {
   "files": {
     "main.css": "/zoomgame/static/css/main.ff28db85.css",
-    "main.js": "/zoomgame/static/js/main.3546b0a1.js",
+    "main.js": "/zoomgame/static/js/main.7085f651.js",
+    "static/media/cake.png": "/zoomgame/static/media/cake.760cdb75ac86acde6776.png",
     "static/media/bg_welcome.png": "/zoomgame/static/media/bg_welcome.22c1b4d7c58c862b9e3a.png",
     "index.html": "/zoomgame/index.html",
     "main.ff28db85.css.map": "/zoomgame/static/css/main.ff28db85.css.map",
-    "main.3546b0a1.js.map": "/zoomgame/static/js/main.3546b0a1.js.map"
+    "main.7085f651.js.map": "/zoomgame/static/js/main.7085f651.js.map"
   },
   "entrypoints": [
     "static/css/main.ff28db85.css",
-    "static/js/main.3546b0a1.js"
+    "static/js/main.7085f651.js"
   ]
 }
