@@ -1,43 +1,61 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
+import cake from "../assets/images/cake.png";
 
 const StartView = () => {
-  const videoRef = useRef(null);
-  const previewImageRef = useRef(null);
+  const canvasRef = useRef(null);
+  const requestAnimation = useRef(null);
+  const [isSnapshot, setIsSnapshot] = useState(false);
 
   const takePhoto = () => {
-    let canvas = previewImageRef.current;
-
-    canvas.width = window.innerWidth;
-    canvas.height = 300;
-
-    let ctx = canvas.getContext("2d");
-    ctx.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+    cancelAnimationFrame(requestAnimation.current);
+    setIsSnapshot(true);
   };
 
-  const downloadImage = () => {
-    var link = document.createElement("a");
-    link.download = "filename.png";
-    link.href = previewImageRef.current.toDataURL();
+  const downloadPhoto = () => {
+    const link = document.createElement("a");
+    link.href = canvasRef.current.toDataURL("image/png");
+    link.setAttribute("download", "photo");
     link.click();
   };
 
   useEffect(() => {
-    async function getMedia() {
-      const option = { audio: false, video: { facingMode: "user" } };
-      const stream = await navigator.mediaDevices.getUserMedia(option);
-      let video = videoRef.current;
-      video.srcObject = stream;
-      video.play();
-    }
+    const video = document.createElement("video");
+    const img = new Image();
 
-    getMedia();
+    const update = () => {
+      const ctx = canvasRef.current.getContext("2d");
+      ctx.drawImage(
+        video,
+        0,
+        0,
+        window.innerWidth,
+        (video.videoHeight / video.videoWidth) * window.innerWidth
+      );
+      img.src = cake;
+      ctx.drawImage(img, 0, 0, 100, 100);
+      requestAnimation.current = requestAnimationFrame(update); // wait for the browser to be ready to present another animation fram.
+    };
+
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: false })
+      .then((localMediaStream) => {
+        video.srcObject = localMediaStream;
+        video.addEventListener("loadeddata", function () {
+          video.play(); // start playing
+          update(); //Start rendering
+        });
+      })
+      .catch((e) => console.error("OH! error", e));
   }, []);
+
   return (
     <>
-      <video ref={videoRef} width="750" height="500" controls></video>
-      <button onClick={takePhoto}>拍照</button>
-      <canvas ref={previewImageRef}></canvas>
-      <button onClick={downloadImage}>下載</button>
+      <canvas ref={canvasRef} width={window.innerWidth} height={500}></canvas>
+      {isSnapshot ? (
+        <button onClick={downloadPhoto}>下載</button>
+      ) : (
+        <button onClick={takePhoto}>拍照</button>
+      )}
     </>
   );
 };

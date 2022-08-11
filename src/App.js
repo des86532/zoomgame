@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div className="app-wrapper">
       <Routes>
-        <Route path="/" element={<MainView />}></Route>
+        <Route path="/zoomgame" element={<MainView />}></Route>
         <Route path="/start" element={<StartView />}></Route>
       </Routes>
     </div>
